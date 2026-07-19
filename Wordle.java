@@ -14,7 +14,7 @@ public class Wordle {
     public Wordle(List<String> words) {
         this.alphabet = getAlphabet();
         this.words = words;
-        this.word = "CHOSE";
+        this.word = randomWord();
         this.letters = word.toCharArray();
         this.wrongGuesses = 0;
         this.isGameOver = false;
