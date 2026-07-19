@@ -12,7 +12,6 @@ public class Display {
                 │  1. Play Game           │
                 │  2. Exit Program        │
                 └─────────────────────────┘""");
-        System.out.print("Choose an option: ");
     }
 
     public static void displayGrid(List<Letter> guessedLetters) {
@@ -41,6 +40,10 @@ public class Display {
                 System.out.println(middleBorder);
             else System.out.println(bottomBorder);
         }
+    }
+
+    public static void resetGrid() {
+        WORD_HISTORY.clear();
     }
 
     public static void displayExitMessage() {
