@@ -14,29 +14,35 @@ public class Wordle {
     public Wordle(List<String> words) {
         this.alphabet = getAlphabet();
         this.words = words;
-        this.word = "CHOSE";//this.word = randomWord();
+        this.word = "CHOSE";
         this.letters = word.toCharArray();
         this.wrongGuesses = 0;
         this.isGameOver = false;
     }
 
     public void playGame(Scanner sc) {
+        Display.resetGrid();
+
         while(!isGameOver) {
             String guess = readGuess(sc);
             List<Letter> guessedLetters = getLetters(guess);
             processGuess(guessedLetters);
+            Display.displayGrid(guessedLetters);
 
-            if(guess.equals(word) || wrongGuesses >= 5)
+            if(guess.equals(word))
                 isGameOver = true;
-            else wrongGuesses++;
+            else {
+                wrongGuesses++;
 
-            Display.displayWord(guessedLetters);
+                if(wrongGuesses >= 6)
+                    isGameOver = true;
+            }
         }
 
         if(isGameOver) {
-            if(wrongGuesses >= 5)
-                System.out.println("Game Over! The word is " + word + ".");
-            else System.out.println("Game Over! You guessed the word " + word + "!");
+            if(wrongGuesses < 6)
+                System.out.println("Game Over! You guessed the word " + word + "!");
+            else System.out.println("Game Over! The correct word is: " + word + ".");
 
             System.out.println();
         }
@@ -77,7 +83,7 @@ public class Wordle {
         String guess;
 
         do {
-            System.out.print("Enter your word guess: ");
+            System.out.print("Guess the word: ");
             guess = sc.nextLine().toUpperCase();
 
             if(guess.length() != 5)
