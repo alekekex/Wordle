@@ -3,15 +3,15 @@ public class Letter {
     private static final String YELLOW = "\u001B[33m";
     private static final String GRAY = "\u001B[38;5;244m";
     private static final String RESET = "\u001B[0m";
-    private String letter;
+    private char letter;
     private String color;
 
-    public Letter(String letter) {
+    public Letter(char letter) {
         this.letter = letter;
         this.color = null;
     }
 
-    public String getLetter() {
+    public char getLetter() {
         return this.letter;
     }
 
@@ -24,7 +24,7 @@ public class Letter {
     }
 
     public String getColoredLetter() {
-        String coloredLetter = this.letter;
+        String coloredLetter = Character.toString(this.letter);
 
         if(this.color != null) {
             if(this.color.equals("GREEN"))
