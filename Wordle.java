@@ -14,7 +14,7 @@ public class Wordle {
     public Wordle(List<String> words) {
         this.alphabet = getAlphabet();
         this.words = words;
-        this.word = "CHICK";
+        this.word = "CHOSE";//this.word = randomWord();
         this.letters = word.toCharArray();
         this.wrongGuesses = 0;
         this.isGameOver = false;
@@ -23,20 +23,36 @@ public class Wordle {
     public void playGame(Scanner sc) {
         while(!isGameOver) {
             String guess = readGuess(sc);
+            List<Letter> guessedLetters = getLetters(guess);
+            processGuess(guessedLetters);
 
-            if(guess.equals(word) || wrongGuesses >= 6)
+            if(guess.equals(word) || wrongGuesses >= 5)
                 isGameOver = true;
-            else {
-                processGuess(guess);
-                wrongGuesses++;
-            }
+            else wrongGuesses++;
+
+            Display.displayWord(guessedLetters);
         }
 
         if(isGameOver) {
-            if(wrongGuesses >= 6)
+            if(wrongGuesses >= 5)
                 System.out.println("Game Over! The word is " + word + ".");
             else System.out.println("Game Over! You guessed the word " + word + "!");
+
+            System.out.println();
         }
+    }
+
+    public List<Letter> getAlphabet() {
+        List<Letter> alphabet = new ArrayList<>();
+        char c = 'A';
+
+        for(int i = 0; i < 26; i++) {
+            Letter l = new Letter(c);
+            alphabet.add(l);
+            c++;
+        }
+
+        return alphabet;
     }
 
     public String randomWord() {
@@ -45,14 +61,12 @@ public class Wordle {
         return words.get(idx).toUpperCase();
     }
 
-    public List<Letter> getAlphabet() {
+    public List<Letter> getLetters(String guess) {
         List<Letter> letters = new ArrayList<>();
-        char c = 'A';
 
-        for(int i = 0; i < 26; i++) {
-            Letter l = new Letter(Character.toString(c));
+        for(int i = 0; i < 5; i++) {
+            Letter l = new Letter(guess.charAt(i));
             letters.add(l);
-            c++;
         }
 
         return letters;
@@ -77,33 +91,24 @@ public class Wordle {
         return guess;
     }
 
-    public void processGuess(String guess) {
-        char[] guessedLetters = guess.toCharArray();
+    public void processGuess(List<Letter> guessedLetters) {
+        char[] temp = letters.clone();
 
         for(int i = 0; i < 5; i++) {
-            if(guessedLetters[i] == letters[i]) {
-                int idx = guessedLetters[i] - 'A';
-                alphabet.get(idx).setColor("GREEN");
+            if(guessedLetters.get(i).getLetter() == temp[i]) {
+                guessedLetters.get(i).setColor("GREEN");
+                temp[i] = '_';
             }
             else {
                 for(int j = 0; j < 5; j++) {
-                    if(guessedLetters[j] == letters[i]) {
-                        int idx = guessedLetters[j] - 'A';
-                        alphabet.get(idx).setColor("YELLOW");
+                    if(guessedLetters.get(i).getLetter() == temp[j]) {
+                        guessedLetters.get(i).setColor("YELLOW");
+                        temp[j] = '_';
+                        j = 5;
                     }
-                    else {
-                        int idx = guessedLetters[j] - 'A';
-                        alphabet.get(idx).setColor("GRAY");
-                    }
+                    else guessedLetters.get(i).setColor("GRAY");
                 }
             }
         }
-    }
-
-    public boolean checkIfGameOver(String guess) {
-        boolean isOver = false;
-
-
-        return isOver;
     }
 }
