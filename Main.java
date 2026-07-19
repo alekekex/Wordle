@@ -44,6 +44,7 @@ public class Main {
 
         do {
             try {
+                System.out.print("Choose an option: ");
                 n = sc.nextInt();
                 sc.nextLine();
 
