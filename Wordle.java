@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Wordle {
-    private List<Character> alphabet;
+    private List<Letter> alphabet;
     private List<String> words;
     private String word;
     private char[] letters;
@@ -28,12 +28,13 @@ public class Wordle {
         return words.get(idx).toUpperCase();
     }
 
-    public List<Character> getAlphabet() {
-        List<Character> letters = new ArrayList<>();
+    public List<Letter> getAlphabet() {
+        List<Letter> letters = new ArrayList<>();
         char c = 'A';
 
         for(int i = 0; i < 26; i++) {
-            letters.add(c);
+            Letter l = new Letter(Character.toString(c));
+            letters.add(l);
             c++;
         }
 
@@ -60,10 +61,6 @@ public class Wordle {
     }
 
     public void processGuess(String guess) {
-
-    }
-
-    public void changeLetterColor(char c, String color) {
 
     }
 }
