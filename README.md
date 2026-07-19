@@ -30,7 +30,7 @@ A console-based Wordle game written in Java. This project was created to practic
 1. Clone the repository:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/alekekex/Wordle.git
 ```
 
 2. Change to the project directory:
