@@ -15,7 +15,7 @@ public class Display {
         System.out.print("Choose an option: ");
     }
 
-    public static void displayWord(List<Letter> guessedLetters) {
+    public static void displayGrid(List<Letter> guessedLetters) {
         String topBorder    = "┌───┬───┬───┬───┬───┐";
         String middleBorder = "├───┼───┼───┼───┼───┤";
         String bottomBorder = "└───┴───┴───┴───┴───┘";
