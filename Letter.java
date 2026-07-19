@@ -1,8 +1,8 @@
 public class Letter {
-    private static final String GREEN = "\\u001B[32m";
-    private static final String YELLOW = "\\u001B[33m";
-    private static final String GRAY = "\\u001B[38;5;244m";
-    private static final String RESET = "\\u001B[0m";
+    private static final String GREEN = "\u001B[32m";
+    private static final String YELLOW = "\u001B[33m";
+    private static final String GRAY = "\u001B[38;5;244m";
+    private static final String RESET = "\u001B[0m";
     private String letter;
     private String color;
 
