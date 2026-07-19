@@ -8,18 +8,35 @@ public class Wordle {
     private List<String> words;
     private String word;
     private char[] letters;
+    private int wrongGuesses;
     private boolean isGameOver;
 
     public Wordle(List<String> words) {
         this.alphabet = getAlphabet();
         this.words = words;
-        this.word = randomWord();
+        this.word = "CHICK";
         this.letters = word.toCharArray();
+        this.wrongGuesses = 0;
         this.isGameOver = false;
     }
 
     public void playGame(Scanner sc) {
+        while(!isGameOver) {
+            String guess = readGuess(sc);
 
+            if(guess.equals(word) || wrongGuesses >= 6)
+                isGameOver = true;
+            else {
+                processGuess(guess);
+                wrongGuesses++;
+            }
+        }
+
+        if(isGameOver) {
+            if(wrongGuesses >= 6)
+                System.out.println("Game Over! The word is " + word + ".");
+            else System.out.println("Game Over! You guessed the word " + word + "!");
+        }
     }
 
     public String randomWord() {
@@ -61,6 +78,32 @@ public class Wordle {
     }
 
     public void processGuess(String guess) {
+        char[] guessedLetters = guess.toCharArray();
 
+        for(int i = 0; i < 5; i++) {
+            if(guessedLetters[i] == letters[i]) {
+                int idx = guessedLetters[i] - 'A';
+                alphabet.get(idx).setColor("GREEN");
+            }
+            else {
+                for(int j = 0; j < 5; j++) {
+                    if(guessedLetters[j] == letters[i]) {
+                        int idx = guessedLetters[j] - 'A';
+                        alphabet.get(idx).setColor("YELLOW");
+                    }
+                    else {
+                        int idx = guessedLetters[j] - 'A';
+                        alphabet.get(idx).setColor("GRAY");
+                    }
+                }
+            }
+        }
+    }
+
+    public boolean checkIfGameOver(String guess) {
+        boolean isOver = false;
+
+
+        return isOver;
     }
 }
