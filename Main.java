@@ -16,9 +16,11 @@ public class Main {
         try {
             words = r.readWords(filePath);
         } catch(FileNotFoundException e) {
-            System.out.println("Could not locate file.");
+            System.out.println("Could not locate file!");
+            isRunning = false;
         } catch(IOException e) {
-            System.out.println("Could not read file.");
+            System.out.println("Could not read file!");
+            isRunning = false;
         }
 
         while(isRunning) {
