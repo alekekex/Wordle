@@ -68,4 +68,4 @@ Wordle/
 
 ## License
 
-Thiss project was created for educational purposes, personal practice, and for fun.
+This project was created for educational purposes, personal practice, and for fun.
