@@ -90,11 +90,26 @@ public class Wordle {
                 System.out.println("Invalid input! Please enter a 5-letter word only.");
             else if(guess.matches(".*[^A-Z].*"))
                 System.out.println("Invalid input! Please enter a word with letters from A-Z only.");
+            else if(!isValidWord(guess))
+                System.out.println("Word is not in list! Please enter a valid word.");
             else isRead = true;
 
         } while(!isRead);
 
         return guess;
+    }
+
+    public boolean isValidWord(String guess) {
+        boolean isValid = false;
+
+        for(int i = 0; i < words.size(); i++) {
+            if(guess.equals(words.get(i).toUpperCase())) {
+                isValid = true;
+                i = words.size();
+            }
+        }
+
+        return isValid;
     }
 
     public void processGuess(List<Letter> guessedLetters) {

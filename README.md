@@ -69,7 +69,6 @@ Wordle/
 ## Future Improvements
 
 - On-screen keyboard display
-- Valid word guesses
 
 ## License
 
