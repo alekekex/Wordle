@@ -6,7 +6,6 @@ A console-based Wordle game written in Java. This project was created to practic
 
 - Random five-letter word selection
 - Color-coded letter feedback
-- On-screen keyboard display (TBA)
 - Input validation
 - Six-attempt gameplay
 - Replay option
@@ -66,6 +65,11 @@ Wordle/
 ├── .gitignore
 └── README.md
 ```
+
+## Future Improvements
+
+- On-screen keyboard display
+- Valid word guesses
 
 ## License
 
