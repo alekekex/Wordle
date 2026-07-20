@@ -42,6 +42,43 @@ public class Display {
         }
     }
 
+    public static void displayKeyboard(List<Letter> alphabet) {
+        int[] row1 = {16, 22, 4, 17, 19, 24, 20, 8, 14, 15};
+        int[] row2 = {0, 18, 3, 5, 6, 7, 9, 10, 11};
+        int[] row3 = {25, 23, 2, 21, 1, 13, 12};
+        System.out.println();
+        System.out.print(" ");
+
+        for(int i = 0; i < row1.length; i++) {
+            if(i > 0)
+                System.out.print(" | ");
+
+            System.out.print(alphabet.get(row1[i]).getColoredLetter());
+        }
+
+        System.out.println();
+        System.out.print("   ");
+
+        for(int i = 0; i < row2.length; i++) {
+            if(i > 0)
+                System.out.print(" | ");
+
+            System.out.print(alphabet.get(row2[i]).getColoredLetter());
+        }
+
+        System.out.println();
+        System.out.print("     ");
+
+        for(int i = 0; i < row3.length; i++) {
+            if(i > 0)
+                System.out.print(" | ");
+
+            System.out.print(alphabet.get(row3[i]).getColoredLetter());
+        }
+
+        System.out.println("\n");
+    }
+
     public static void resetGrid() {
         WORD_HISTORY.clear();
     }
