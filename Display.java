@@ -24,7 +24,7 @@ public class Display {
         for(int i = 0; i < 6; i++) {
             System.out.print("│");
 
-            for (int j = 0; j < 5; j++) {
+            for(int j = 0; j < 5; j++) {
                 int idx = (i * 5) + j;
 
                 if(idx < WORD_HISTORY.size()) {
@@ -36,7 +36,7 @@ public class Display {
 
             System.out.println();
 
-            if (i < 5)
+            if(i < 5)
                 System.out.println(middleBorder);
             else System.out.println(bottomBorder);
         }
