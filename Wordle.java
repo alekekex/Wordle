@@ -14,7 +14,7 @@ public class Wordle {
     public Wordle(List<String> words) {
         this.alphabet = getAlphabet();
         this.words = words;
-        this.word = randomWord();
+        this.word = randomWord();//this.word = "CHOSE";
         this.letters = word.toCharArray();
         this.wrongGuesses = 0;
         this.isGameOver = false;
@@ -27,7 +27,9 @@ public class Wordle {
             String guess = readGuess(sc);
             List<Letter> guessedLetters = getLetters(guess);
             processGuess(guessedLetters);
+            updateKeyboard(guessedLetters);
             Display.displayGrid(guessedLetters);
+            Display.displayKeyboard(alphabet);
 
             if(guess.equals(word))
                 isGameOver = true;
@@ -130,6 +132,20 @@ public class Wordle {
                     else guessedLetters.get(i).setColor("GRAY");
                 }
             }
+        }
+    }
+
+    public void updateKeyboard(List<Letter> guessedLetters) {
+        for(int i = 0; i < 5; i++) {
+            int idx = guessedLetters.get(i).getLetter() - 'A';
+
+            if(guessedLetters.get(i).getColor().equals("GREEN"))
+                alphabet.get(idx).setColor("GREEN");
+            else if(guessedLetters.get(i).getColor().equals("YELLOW"))
+                alphabet.get(idx).setColor("YELLOW");
+            else if(guessedLetters.get(i).getColor().equals("GRAY") &&
+                    !("YELLOW".equals(alphabet.get(idx).getColor())))
+                alphabet.get(idx).setColor("GRAY");
         }
     }
 }
