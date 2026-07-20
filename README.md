@@ -66,10 +66,6 @@ Wordle/
 └── README.md
 ```
 
-## Future Improvements
-
-- On-screen keyboard display
-
 ## License
 
 This project was created for educational purposes, personal practice, and for fun.
