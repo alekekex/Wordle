@@ -145,7 +145,8 @@ public class Wordle {
                     !("GREEN".equals(alphabet.get(idx).getColor())))
                 alphabet.get(idx).setColor("YELLOW");
             else if(guessedLetters.get(i).getColor().equals("GRAY") &&
-                    !("YELLOW".equals(alphabet.get(idx).getColor())))
+                    !("YELLOW".equals(alphabet.get(idx).getColor())) &&
+                    !("GREEN".equals(alphabet.get(idx).getColor())))
                 alphabet.get(idx).setColor("GRAY");
         }
     }
